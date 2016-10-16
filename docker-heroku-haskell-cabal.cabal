@@ -19,6 +19,7 @@ library
 --  other-modules:       Models.User
 -- Add third party dependencies
   build-depends:       base >=4.8 && <4.9,
+                       http-types,
                        wai,
                        warp
   ghc-options:         -Wall
@@ -28,5 +29,6 @@ executable docker-heroku-haskell-cabal
   main-is:             Main.hs
   -- other-modules:
   -- other-extensions:
-  build-depends:       base >=4.8 && <4.9
+  build-depends:       base >=4.8 && <4.9,
+                       docker-heroku-haskell-cabal
   default-language:    Haskell2010

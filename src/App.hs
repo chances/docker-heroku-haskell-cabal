@@ -1,5 +1,4 @@
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module App (run) where
 
@@ -10,7 +9,7 @@ import Network.HTTP.Types.Header (hContentType)
 
 app :: Application
 app req f =
-    f $ responseLBS status200 [(hContentType, "text/plain")] "Hello world!"
+    f $ responseLBS status200 [(hContentType, "text/plain")] "Hello, world!"
 
 run :: Warp.Port -> IO ()
 run port = Warp.run port app

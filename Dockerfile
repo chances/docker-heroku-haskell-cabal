@@ -1,5 +1,4 @@
 FROM heroku/cedar:14
-#FROM thoughtbot/heroku-haskell-stack
 
 ENV LANG en_US.UTF-8
 # Cabal and ghc binaries
@@ -8,14 +7,6 @@ ENV PATH /root/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
 # Heroku assumes we'll put everything in /app/user
 RUN mkdir -p /app/user
 WORKDIR /app/user
-
-#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 575159689BEFB442 \
-#  && echo 'deb http://download.fpcomplete.com/ubuntu trusty main' > \
-#    /etc/apt/sources.list.d/fpco.list \
-#  && apt-get update \
-#  && apt-get install -y stack \
-#  && apt-get clean \
-#  && rm -rf /var/lib/apt/lists/*
 
 # Install the Haskell platform
 RUN if [ $(dpkg-query -W -f='${Status}' ghc-7.10.3 2>/dev/null | grep -c "ok installed") -eq 0 ]; then \
@@ -33,7 +24,6 @@ ONBUILD RUN cabal update \
   && cabal install $(cat cabal-bootstrap)
 
 # Copy over configuration for building the app, including frozen cabal config
-ONBUILD COPY stack.yaml .
 ONBUILD COPY cabal.config .
 ONBUILD COPY *.cabal .
 

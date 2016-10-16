@@ -1,6 +1,6 @@
-name:                servant-tutorial
+name:                docker-heroku-haskell-cabal
 version:             0.1.0.0
-synopsis:            Checking out the servant tutorial...
+synopsis:            Barebones Haskell with Cabal Docker image
 -- description:
 license:             MIT
 license-file:        LICENSE
@@ -15,23 +15,18 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     App
-  other-modules:       Models.User
+-- Add other internal modules here
+--  other-modules:       Models.User
+-- Add third party dependencies
   build-depends:       base >=4.8 && <4.9,
-                       string-conversions,
-                       time,
-                       text,
-                       servant-server,
-                       http-api-data,
-                       aeson,
                        wai,
                        warp
   ghc-options:         -Wall
   default-language:    Haskell2010
 
-executable servant-tutorial
+executable docker-heroku-haskell-cabal
   main-is:             Main.hs
   -- other-modules:
   -- other-extensions:
-  build-depends:       base >=4.8 && <4.9,
-                       servant-tutorial
+  build-depends:       base >=4.8 && <4.9
   default-language:    Haskell2010

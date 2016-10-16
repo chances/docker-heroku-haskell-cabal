@@ -1,1 +1,1 @@
-console: stack dot
+web: ./docker-heroku-haskell-cabal
